@@ -2,6 +2,12 @@
 
 API Spring Boot 3 / Java 17 permettant de publier des **articles** de blog et d'ajouter des **commentaires**.
 
+> 📘 **Procédure de test pas à pas :** voir [GUIDE_DE_TEST.md](GUIDE_DE_TEST.md)
+> — lancement depuis le terminal et vérification de chaque fonctionnalité
+> exigée par le cahier des charges.
+
+> 🔗 **Lien du dépôt GitHub :** voir [LIEN_GITHUB.md](LIEN_GITHUB.md)
+
 ## Prérequis
 - Java 17, Maven 3.9+
 - PostgreSQL 15 (ou le conteneur fourni par Docker Compose)
