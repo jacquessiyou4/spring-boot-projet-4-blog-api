@@ -61,6 +61,14 @@ public class Article {
     @Column(name = "publication_date")
     private LocalDateTime publicationDate;
 
+    /**
+     * Exclu de toString() et equals()/hashCode() : la relation est bidirectionnelle.
+     * Lombok @Data génère sinon des méthodes qui s'appellent mutuellement entre
+     * les deux entités (article -> commentaires -> article -> ...), ce qui lève
+     * un StackOverflowError dès qu'on journalise ou compare une entité chargée.
+     */
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Builder.Default
     private List<Comment> comments = new ArrayList<>();

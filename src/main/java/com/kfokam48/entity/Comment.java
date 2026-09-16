@@ -44,6 +44,14 @@ public class Comment {
     @Builder.Default
     private CommentStatus status = CommentStatus.PENDING;
 
+    /**
+     * Exclu de toString() et equals()/hashCode() : la relation est bidirectionnelle.
+     * Lombok @Data génère sinon des méthodes qui s'appellent mutuellement entre
+     * les deux entités (article -> commentaires -> article -> ...), ce qui lève
+     * un StackOverflowError dès qu'on journalise ou compare une entité chargée.
+     */
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "article_id", nullable = false)
     private Article article;
